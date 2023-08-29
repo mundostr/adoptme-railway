@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const collection = 'Users';
+mongoose.pluralize(null);
+
+const collection = 'users';
 
 const schema = new mongoose.Schema({
     first_name:{

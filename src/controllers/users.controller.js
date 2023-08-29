@@ -5,6 +5,11 @@ const getAllUsers = async(req,res)=>{
     res.send({status:"success",payload:users})
 }
 
+const showUsers = async(req,res)=>{
+    const users = await usersService.getAll();
+    res.render('users', { users });
+}
+
 const getUser = async(req,res)=> {
     const userId = req.params.uid;
     const user = await usersService.getUserById(userId);
@@ -31,5 +36,6 @@ export default {
     deleteUser,
     getAllUsers,
     getUser,
-    updateUser
+    updateUser,
+    showUsers
 }
