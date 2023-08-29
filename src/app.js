@@ -8,7 +8,11 @@ import adoptionsRouter from './routes/adoption.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 
 import { engine } from 'express-handlebars';
-import __dirname from './utils/index.js';
+import {fileURLToPath} from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -28,6 +32,6 @@ app.all('*', (req, res) => { res.status(404).send('No se encuentra el endpoint s
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
-app.set('views', `${__dirname.replace('\\utils', '')}/views`);
+app.set('views', `${__dirname}/views`);
 
 app.listen(PORT,()=>console.log(`Listening on ${PORT}`))
